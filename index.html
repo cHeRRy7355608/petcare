@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FurEver Care — Pet Care Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=324234234&callback=initMap"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div id="preloader" class="preloader">
+    <div class="preloader-inner">
+      <div class="paw">🦮</div>
+      <div class="pre-text">FurEver Care</div>
+      <div class="spinner"></div>
+    </div>
+  </div>
+  <nav class="navbar glass-nav navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <span class="brand-badge"><i class="fas fa-paw"></i></span>
+        <span class="brand-title">FurEver Care</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto" id="dynamicMenu">
+          <li class="nav-item"><a class="nav-link" href="#overview">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#commonSections">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#aboutUs">About</a></li>
+        </ul>
+        <div class="ms-3 d-flex align-items-center">
+          <select id="categorySwitcher" class="form-select ms-2" style="display:none; width:auto; background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+            <option value="petOwner">Pet Owner</option>
+            <option value="veterinarian">Veterinarian</option>
+            <option value="shelter">Animal Shelter</option>
+          </select>    
+          <button class="btn btn-sm btn-outline-light ms-3" id="logoutBtn" style="display:none;"  >Logout</button>
+        </div> 
+      <div class="ms-3 d-flex align-items-center">
+  <div id="userName" class="user-pill" style="display:none; margin-right:10px;"></div>
+  <button class="btn btn-sm btn-outline-light" id="logoutBtn" style="display:none;">Logout</button>
+</div>
+
+      </div>
+    </div>
+  </nav>
+  <div class="ticker glass-card" id="ticker">
+    <div id="tickerContent">Welcome to FurEver Care • <span id="tickerTime"></span> • <span id="tickerLocation">Loc: —</span> • Visitors: <span id="visitorCount">0</span> • Discover premium pet care services!</div>
+  </div>
+
+
+
+
+
+  <header class="hero">
+    <div class="overlay-shapes">
+      <div class="shape s1"></div><div class="shape s2"></div><div class="shape s3"></div>
+    </div>
+    <div class="container h-100 d-flex align-items-center">
+      <div class="row w-100">
+        <div class="col-lg-6 hero-left">
+          <h1 class="hero-title ">FurEver Care</h1>
+          <p class="hero-sub">A sanctuary of love and elegance for your beloved pets. At <b class="text-dark">FurEver Care</b>, we believe that pets are not just animals — they are family, companions, and loyal friends who fill our lives with unconditional love and joy.</p>
+          
+          <div class="hero-stats mt-4 d-flex gap-3">
+            <div class="stat glass-card"><strong id="statPets">0</strong><small>Pets</small></div>
+            <div class="stat glass-card"><strong id="statProducts">0</strong><small>Products</small></div>
+            <div class="stat glass-card"><strong id="statAdopt">0</strong><small>Adoptables</small></div>
+          </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1 hero-form-wrap">
+          <div class="landing-form glass-card animate-in">
+            <h5 class="mb-3">Start Your Journey</h5>
+            <form id="landingForm">
+              <div class="mb-3">
+                <input type="text" id="userNameInput" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="mb-3 d-flex gap-2 flex-wrap">
+                <label class="btn-option"><input type="radio" name="userCategory" value="petOwner" required> Pet Owner</label>
+                <label class="btn-option"><input type="radio" name="userCategory" value="veterinarian"> Veterinarian</label>
+                <label class="btn-option"><input type="radio" name="userCategory" value="shelter"> Animal Shelter</label>
+              </div>
+              <button class="btn btn-cta w-100" type="submit">Begin</button>
+              <small class="d-block mt-2 text-muted">Adopt Your <strong>Favorite PET</strong> Today</small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="container my-5">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="glass-card p-3 d-flex align-items-center gap-3 animate-in">
+          <i class="fas fa-clock fa-lg accent"></i>
+          <div>
+            <div class="small text-muted">Current Time</div>
+            <div id="clockDisplay" class="fw-bold"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="glass-card p-3 d-flex align-items-center gap-3 animate-in">
+          <i class="fas fa-map-marker-alt fa-lg accent"></i>
+          <div>
+            <div class="small text-muted">Your Location</div>
+            <div id="geoDisplay" class="fw-bold">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section id="overview" class="mt-5" style="display:none;">
+      <h2 class="section-title">Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="glass-card p-4 text-center card-hover animate-in">
+            <i class="fas fa-bowl-food fa-2x accent mb-2"></i>
+            <h5>Feeding Guides</h5>
+            <p class="small">Curated meal plans for your pet’s vitality.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="glass-card p-4 text-center card-hover animate-in">
+            <i class="fas fa-shower fa-2x accent mb-2"></i>
+            <h5>Grooming</h5>
+            <p class="small">Expert tutorials for a pristine companion.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="glass-card p-4 text-center card-hover animate-in">
+            <i class="fas fa-hand-holding-heart fa-2x accent mb-2"></i>
+            <h5>Adoption & Shelters</h5>
+            <p class="small">Connect with pets seeking forever homes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="petOwnerSection" class="mt-5" style="display:none;">
+      <h2 class="section-title">Pet Owner Dashboard</h2>
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="glass-card p-4 card-hover animate-in">
+            <h6>Add Pet Profile</h6>
+            <form id="petProfileForm">
+              <input type="text" id="petName" class="form-control mb-2" placeholder="Pet Name" required>
+              <input type="text" id="petSpecies" class="form-control mb-2" placeholder="Species (e.g., Dog)" required>
+              <input type="text" id="petBreed" class="form-control mb-2" placeholder="Breed" required>
+              <input type="number" id="petAge" class="form-control mb-2" placeholder="Age (Years)" required>
+              <textarea id="vaccinationInfo" class="form-control mb-2" placeholder="Vaccination Info (Optional)"></textarea>
+              <button class="btn btn-cta w-100" type="submit">Save Pet</button>
+            </form>
+          </div>
+          <div id="petProfileDisplay" class="glass-card p-3 mt-3 card-hover animate-in" style="display:none;">
+            <h6>Pet Profile</h6>
+            <div id="profileDetails"></div>
+          </div>
+          <div class="glass-card p-3 mt-3 card-hover animate-in">
+            <h6>Feeding Guide</h6>
+            <small class="text-muted">Tailored portions for optimal health.</small>
+            <div class="mt-2">
+              <table class="table table-sm feeding-table">
+                <thead><tr><th>Weight (lbs)</th><th>Puppy</th><th>Adult</th></tr></thead>
+                <tbody id="feedingTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="glass-card p-3 mt-3 card-hover animate-in">
+            <h6>Training Tips</h6>
+            <ul id="trainingTipsList" class="list-group list-group-flush"></ul>
+            <audio controls class="mt-2 w-100"><source src="audio/training-tip.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="glass-card p-4 card-hover animate-in">
+            <h6>Pet Products</h6>
+            <div class="d-flex gap-2 mb-3">
+              <input id="productSearch" class="form-control" placeholder="Search Products..." />
+              <select id="productSort" class="form-select w-auto">
+                <option value="default">Sort</option>
+                <option value="name-asc">Name A-Z</option>
+                <option value="name-desc">Name Z-A</option>
+                <option value="price-asc">Price ↑</option>
+                <option value="price-desc">Price ↓</option>
+              </select>
+            </div>
+            <div id="productFilters" class="mb-3 d-flex gap-2 flex-wrap">
+              <button class="btn filter-btn active" data-filter="all">All</button>
+              <button class="btn filter-btn" data-filter="food">Food</button>
+              <button class="btn filter-btn" data-filter="toys">Toys</button>
+              <button class="btn filter-btn" data-filter="grooming">Grooming</button>
+              <button class="btn filter-btn" data-filter="bedding">Bedding</button>
+              <button class="btn filter-btn" data-filter="supplements">Supplements</button>
+            </div>
+            <div id="productsGrid" class="row g-3"></div>
+          </div>
+          <div class="glass-card p-4 mt-3 card-hover animate-in">
+            <h6>Grooming Videos</h6>
+            <div class="row g-3 mt-2" id="groomingVideos"></div>
+          </div>
+          <div class="glass-card p-4 mt-3 card-hover animate-in">
+            <h6>Health Tips</h6>
+            <div class="row g-3 mt-2" id="healthTips"></div>
+          </div>
+          <div class="glass-card p-4 mt-3 card-hover animate-in">
+            <h6>Emergency & Vet Help</h6>
+            <table class="table table-sm">
+              <tbody id="helplinesTable"></tbody>
+            </table>
+            <div class="mt-3">
+              <h6>Contact Us</h6>
+              <p><i class="fas fa-phone me-2"></i>(555) 987-6543</p>
+              <p><i class="fas fa-envelope me-2"></i>info@furevercare.com</p>
+              <p><i class="fas fa-map-marker-alt me-2"></i>123 Pet Care Blvd</p>
+            </div>
+          </div>
+          <div class="glass-card p-4 mt-3 card-hover animate-in" id="aboutUs">
+            <h6>About Us</h6>
+            <p>FurEver Care is a haven for pet lovers, uniting owners, veterinarians, and shelters in a seamless, elegant ecosystem for pet wellness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="veterinarianSection" class="mt-5" style="display:none;">
+      <h2 class="section-title">Veterinarian Dashboard</h2>
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="glass-card p-4 card-hover animate-in">
+            <h6>Veterinarian Profile</h6>
+            <form id="vetProfileForm">
+              <input id="vetName" class="form-control mb-2" placeholder="Full Name" required>
+              <input id="vetSpecialization" class="form-control mb-2" placeholder="Specialization" required>
+              <input id="vetContact" class="form-control mb-2" placeholder="Contact" required>
+              <input id="vetImage" class="form-control mb-2" placeholder="Image URL (Optional)">
+              <button class="btn btn-cta w-100" type="submit">Save Profile</button>
+            </form>
+          </div>
+          <div id="vetProfileDisplay" class="glass-card p-3 mt-3 card-hover animate-in" style="display:none;">
+            <h6>Your Profile</h6>
+            <div id="vetDetails"></div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="glass-card p-4 card-hover animate-in">
+            <h6>Appointment Slots</h6>
+            <div id="timeSlots" class="mt-2 d-flex flex-column gap-2"></div>
+          </div>
+          <div class="glass-card p-4 mt-3 card-hover animate-in">
+            <h6>Pet Medical Histories</h6>
+            <div id="caseStudies" class="mt-2 d-flex flex-column gap-2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="shelterSection" class="mt-5" style="display:none;">
+      <h2 class="section-title">Animal Shelter Dashboard</h2>
+      <div class="glass-card p-3 mb-3 card-hover animate-in">
+        <div class="d-flex gap-2 flex-wrap">
+          <button class="btn filter-btn active" data-filter="all">All</button>
+          <button class="btn filter-btn" data-filter="dog">Dogs</button>
+          <button class="btn filter-btn" data-filter="cat">Cats</button>
+          <button class="btn filter-btn" data-filter="rabbit">Rabbits</button>
+        </div>
+      </div>
+      <div id="adoptionGallery" class="row g-3"></div>
+      <div class="row mt-4 g-3">
+        <div class="col-md-6">
+          <div class="glass-card p-4 card-hover animate-in">
+            <h6>Success Stories</h6>
+            <div id="successStories" class="mt-2 d-flex flex-column gap-3"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="glass-card p-4 card-hover animate-in">
+            <h6>Event Announcements</h6>
+            <div id="eventAnnouncements" class="mt-2 d-flex flex-column gap-2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="glass-card p-4 mt-4 card-hover animate-in">
+  <h6>Shelter Contact & Map</h6>
+  <p><i class="fas fa-phone me-2"></i>(+92) 314 7765273<br><i class="fas fa-phone me-2"></i>(+92) 319 6333621</p>
+  <p><i class="fas fa-envelope me-2"></i>zaidzakirkaj5388@gmail.com<br><i class="fas fa-envelope me-2"></i>siddiquisahab0094@gmail.com</p>
+  <p><i class="fas fa-map-marker-alt me-2"></i>A 563, Main Shahrah-e-Usman, Sector 11-A Sector 11 A North Karachi, Karachi, 75850, Pakistan</p>
+
+  <!-- Responsive Map Container -->
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin-top:10px;">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28979.93359108785!2d67.0011363!3d24.8607346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f96c4aefbb7%3A0x26f1e9777dc702d2!2sAdoption%20Lane!5e0!3m2!1sen!2s!4v1694500000000!5m2!1sen!2s" 
+      width="100%" 
+      height="100%" 
+      style="position:absolute;top:0;left:0;border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+    </section>
+    <section id="commonSections" class="mt-5" style="display:none;">
+      <div class="glass-card p-4 card-hover animate-in">
+        <h2 class="section-title">Feedback & Contact</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <form id="feedbackForm">
+              <input class="form-control mb-2" placeholder="Your Name" required>
+              <input class="form-control mb-2" type="email" placeholder="Email" required>
+              <textarea class="form-control mb-2" rows="4" placeholder="Your Feedback" required></textarea>
+              <button class="btn btn-cta w-100">Send Feedback</button>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <h6>Contact Info</h6>
+            <p><i class="fas fa-phone me-2"></i>(+92) 314 7765273<br><i class="fas fa-phone me-2"></i>(+92) 319 6333621</p>
+            <p><i class="fas fa-envelope me-2"></i>zaidzakirkaj5388@gmail.com<br><i class="fas fa-envelope me-2"></i>siddiquisahab0094@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt me-2"></i>A 563, Main Shahrah-e-Usman, Sector 11-A Sector 11 A North Karachi, Karachi, 75850, Pakistan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer glass-footer py-5 text-white">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5 class="mb-3">FurEver Care</h5>
+          <p class="small">A sanctuary of love and elegance for your beloved pets.</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#overview" class="text-white text-decoration-none link-hover">Home</a></li>
+            <li><a href="#petOwnerSection" class="text-white text-decoration-none link-hover">Pet Owners</a></li>
+            <li><a href="#veterinarianSection" class="text-white text-decoration-none link-hover">Veterinarians</a></li>
+            <li><a href="#shelterSection" class="text-white text-decoration-none link-hover">Shelters</a></li>
+            <li><a href="#commonSections" class="text-white text-decoration-none link-hover">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5 class="mb-3">Stay Connected</h5>
+          <form id="newsletterForm" class="d-flex gap-2">
+            <input type="email" class="form-control" placeholder="Enter Your Email" required>
+            <button class="btn btn-cta" type="submit">Subscribe</button>
+          </form>
+          <div class="mt-3">
+            <a class="btn-social me-2" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn-social me-2" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a class="btn-social" href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
+      <div class="text-center">
+        <small>&copy; 2025 FurEver Care — Crafted with Love for Your Pets</small>
+      </div>
+    </div>
+  </footer>
+  <a href="#" class="back-to-top" title="Back to top"><i class="fas fa-chevron-up"></i></a>
+</body>
+</html>
