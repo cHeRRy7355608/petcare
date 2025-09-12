@@ -24,18 +24,18 @@
   "products": [
     {"name": "Premium Dog Food 2kg", 
     "desc": "Nutritious dry kibble for adult dogs",
-    "image": "../images/dog food/dogfood1.jpg", 
+    "image": "images/dog food/dogfood1.jpg", 
     "price": "19.99", 
     "category": "food"},
-    {"name": "Grain-Free Cat Food 1kg", "desc": "High-protein kibble for cats", "image": "../images/cat food/food1.jpg", "price": "15.49", "category": "food"},
-    {"name": "Squeaky Ball Toy", "desc": "Durable toy for active dogs", "image": "../images/dog food/dogfood2.jpg", "price": "6.99", "category": "toys"},
-    {"name": "Catnip Mouse", "desc": "Interactive toy for cats", "image": "../images/cat food/food2.jpg", "price": "4.99", "category": "toys"},
-    {"name": "Cat Grooming Brush", "desc": "Gentle brush for sensitive skin", "image": "../images/cat food/food3.jpg", "price": "9.99", "category": "grooming"},
-    {"name": "Flea & Tick Shampoo", "desc": "Monthly protection for dogs", "image": "../images/dog food/dogfood3.jpg", "price": "12.99", "category": "grooming"},
-    {"name": "Orthopedic Pet Bed", "desc": "Comfortable bed for joint support", "image": "../images/dog food/download1.jpg", "price": "29.99", "category": "bedding"},
-    {"name": "Cozy Cat Blanket", "desc": "Soft blanket for cats", "image": "../images/cat food/food4.jpg", "price": "14.99", "category": "bedding"},
-    {"name": "Joint Health Supplement", "desc": "Glucosamine for dogs and cats", "image": "../images/dog food/download2.jpg", "price": "22.99", "category": "supplements"},
-    {"name": "Omega-3 Fish Oil", "desc": "Supports skin and coat health", "image": "../images/dog food/oil.jpg", "price": "17.99", "category": "supplements"}
+    {"name": "Grain-Free Cat Food 1kg", "desc": "High-protein kibble for cats", "image": "images/cat food/food1.jpg", "price": "15.49", "category": "food"},
+    {"name": "Squeaky Ball Toy", "desc": "Durable toy for active dogs", "image": "images/dog food/dogfood2.jpg", "price": "6.99", "category": "toys"},
+    {"name": "Catnip Mouse", "desc": "Interactive toy for cats", "image": "images/cat food/food2.jpg", "price": "4.99", "category": "toys"},
+    {"name": "Cat Grooming Brush", "desc": "Gentle brush for sensitive skin", "image": "images/cat food/food3.jpg", "price": "9.99", "category": "grooming"},
+    {"name": "Flea & Tick Shampoo", "desc": "Monthly protection for dogs", "image": "images/dog food/dogfood3.jpg", "price": "12.99", "category": "grooming"},
+    {"name": "Orthopedic Pet Bed", "desc": "Comfortable bed for joint support", "image": "images/dog food/download1.jpg", "price": "29.99", "category": "bedding"},
+    {"name": "Cozy Cat Blanket", "desc": "Soft blanket for cats", "image": "images/cat food/food4.jpg", "price": "14.99", "category": "bedding"},
+    {"name": "Joint Health Supplement", "desc": "Glucosamine for dogs and cats", "image": "images/dog food/download2.jpg", "price": "22.99", "category": "supplements"},
+    {"name": "Omega-3 Fish Oil", "desc": "Supports skin and coat health", "image": "images/dog food/oil.jpg", "price": "17.99", "category": "supplements"}
   ],
   "helplines": [
     {"name": "Emergency Vet Karachi", "number": "+92 314 7765273"},
@@ -49,7 +49,7 @@
     "breed": "Labrador",
     "age": "2 years",
     "desc": "Friendly and active.",
-    "image": "../images/dogs/dog1.jpg"
+    "image": "images/dogs/dog1.jpg"
   },
   {
     "name": "Luna",
@@ -57,7 +57,7 @@
     "breed": "Husky",
     "age": "1 years",
     "desc": "Friendly and active.",
-    "image": "../images/dogs/dog4.jpg"
+    "image": "images/dogs/dog4.jpg"
   },
   {
     "name": "Bruno",
@@ -65,7 +65,7 @@
     "breed": "Beagle",
     "age": "2 years",
     "desc": "Friendly and active.",
-    "image": "../images/dogs/dog5.jpg"
+    "image": "images/dogs/dog5.jpg"
   },
   {
     "name": "Simba",
@@ -73,7 +73,7 @@
     "breed": "Persian",
     "age": "3 months",
     "desc": "Friendly and active.",
-    "image": "../images/cats/cat2.jpg"
+    "image": "images/cats/cat2.jpg"
   },
   {
     "name": "Thumper ",
@@ -81,7 +81,7 @@
     "breed": "Holland Lop",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/rabbit/rab2.jpg"
+    "image": "images/rabbit/rab2.jpg"
   },
    {
     "name": "Flemmy ",
@@ -89,7 +89,7 @@
     "breed": "Flemish Giant",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/rabbit/rab3.jpg"
+    "image": "images/rabbit/rab3.jpg"
   },
    {
     "name": "Nethie",
@@ -97,7 +97,7 @@
     "breed": "Netherland Dwarf",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/rabbit/rab4.jpg"
+    "image": "images/rabbit/rab4.jpg"
   },
     {
     "name": "Velvet Bun",
@@ -105,7 +105,7 @@
     "breed": "Mini Rex",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/rabbit/rab5.jpg"
+    "image": "images/rabbit/rab5.jpg"
   },
     {
     "name": "AF Lop",
@@ -113,7 +113,7 @@
     "breed": "American Fuzzy Lop",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/rabbit/rab6.jpg"
+    "image": "images/rabbit/rab6.jpg"
   },
   
    
@@ -126,7 +126,7 @@
     "breed": "Siamese",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/cats/cat3.jpg"
+    "image": "images/cats/cat3.jpg"
   },
   
   
@@ -136,7 +136,7 @@
     "breed": "Manx",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/cats/cat4.jpg"
+    "image": "images/cats/cat4.jpg"
   },
   
   
@@ -146,7 +146,7 @@
     "breed": "Sphynx",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/cats/cat5.jpg"
+    "image": "images/cats/cat5.jpg"
   },
   
       {
@@ -155,7 +155,7 @@
     "breed": "Tonkinese",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/cats/cat6.jpg"
+    "image": "images/cats/cat6.jpg"
   },
     {"name": "Bunny", "species": "rabbit", "breed": "Mini Lop", "age": "6 months", "desc": "Playful and sweet.", "image": "images/rabbit/rab1.jpg"},
     {"name": "Coco", "species": "dog", "breed": "Beagle", "age": "3 years", "desc": "Curious and loves walks.", "image": "images/dogs/dog3.jpg"},
@@ -165,7 +165,7 @@
     "breed": "Poodle",
     "age": " 1 years",
     "desc": "Friendly and active.",
-    "image": "../images/dogs/dog6.jpg"
+    "image": "images/dogs/dog6.jpg"
   }
   
   ],
@@ -174,8 +174,8 @@
     {"title": "Adoption Drive", "date": "2025-10-05", "location": "City Park", "desc": "Meet our adoptable animals and adopt a friend."}
   ],
   "successStories": [
-    {"title": "Max's New Home", "image": "../images/Max's New Home/max.jpg", "text": "Max was adopted last year and is thriving with his new family."},
-    {"title": "Luna's Journey", "image": "../images/Max's New Home/Luna.jpg", "text": "From shelter to forever home, Luna's story inspires many."}
+    {"title": "Max's New Home", "image": "images/Max's New Home/max.jpg", "text": "Max was adopted last year and is thriving with his new family."},
+    {"title": "Luna's Journey", "image": "images/Max's New Home/Luna.jpg", "text": "From shelter to forever home, Luna's story inspires many."}
   ],
   "caseStudies": [
     {"title": "Case Study 1: Allergy Management", "text": "Treated with diet change and meds; full recovery in 2 weeks."},
