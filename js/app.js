@@ -563,9 +563,8 @@ function renderPetProfile(p) {
   const box = document.getElementById('profileDetails');
   const el = document.createElement('div');
   el.className = 'd-flex gap-3 align-items-center mb-3';
-  el.innerHTML = `
-    <img src="../images/dogs/dog1.jpg" style="width:70px;height:70px;border-radius:10px;object-fit:cover">
-    <div>
+  el.innerHTML =
+   `<div>
       <strong>${p.name}</strong>
       <div class="small text-muted">${p.species} • ${p.breed} • ${p.age}</div>
       <div class="small text-muted">Vaccination: ${p.vaccination}</div>
