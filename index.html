@@ -15,6 +15,7 @@
   <script src="js/app.js" defer></script>
 </head>
 <body>
+  
   <div id="preloader" class="preloader">
     <div class="preloader-inner">
       <div class="paw">🦮</div>
@@ -22,6 +23,13 @@
       <div class="spinner"></div>
     </div>
   </div>
+
+
+
+
+
+
+
   <nav class="navbar glass-nav navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="#">
@@ -33,9 +41,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto" id="dynamicMenu">
-          <li class="nav-item"><a class="nav-link" href="#overview">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#commonSections">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="#aboutUs">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          
         </ul>
         <div class="ms-3 d-flex align-items-center">
           <select id="categorySwitcher" class="form-select ms-2" style="display:none; width:auto; background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
@@ -53,6 +60,12 @@
       </div>
     </div>
   </nav>
+
+
+
+
+
+
   <div class="ticker glass-card" id="ticker">
     <div id="tickerContent">Welcome to FurEver Care • <span id="tickerTime"></span> • <span id="tickerLocation">Loc: —</span> • Visitors: <span id="visitorCount">0</span> • Discover premium pet care services!</div>
   </div>
@@ -97,6 +110,12 @@
       </div>
     </div>
   </header>
+
+
+
+
+
+
   <main class="container my-5">
     <div class="row g-3">
       <div class="col-md-6">
@@ -118,7 +137,9 @@
         </div>
       </div>
     </div>
-    <section id="overview" class="mt-5" style="display:none;">
+
+    
+     <section id="overview" class="mt-5" style="display:none;">
       <h2 class="section-title">Our Services</h2>
       <div class="row g-4">
         <div class="col-md-4">
@@ -143,7 +164,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> 
     <section id="petOwnerSection" class="mt-5" style="display:none;">
       <h2 class="section-title">Pet Owner Dashboard</h2>
       <div class="row g-4">
@@ -176,7 +197,6 @@
           <div class="glass-card p-3 mt-3 card-hover animate-in">
             <h6>Training Tips</h6>
             <ul id="trainingTipsList" class="list-group list-group-flush"></ul>
-            <audio controls class="mt-2 w-100"><source src="audio/training-tip.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
           </div>
         </div>
         <div class="col-lg-8">
@@ -210,7 +230,7 @@
             <h6>Health Tips</h6>
             <div class="row g-3 mt-2" id="healthTips"></div>
           </div>
-          <div class="glass-card p-4 mt-3 card-hover animate-in">
+          <div class="glass-card p-4 mt-3 card-hover animate-in" id="emer">
             <h6>Emergency & Vet Help</h6>
             <table class="table table-sm">
               <tbody id="helplinesTable"></tbody>
@@ -224,7 +244,9 @@
           </div>
           <div class="glass-card p-4 mt-3 card-hover animate-in" id="aboutUs">
             <h6>About Us</h6>
-            <p>FurEver Care is a haven for pet lovers, uniting owners, veterinarians, and shelters in a seamless, elegant ecosystem for pet wellness.</p>
+            <p>FurEver Care is a haven for pet lovers, uniting owners, veterinarians, and shelters in a seamless, elegant ecosystem for pet wellness.
+              
+            </p>
           </div>
         </div>
       </div>
@@ -279,14 +301,14 @@
             <div id="successStories" class="mt-2 d-flex flex-column gap-3"></div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" >
           <div class="glass-card p-4 card-hover animate-in">
             <h6>Event Announcements</h6>
             <div id="eventAnnouncements" class="mt-2 d-flex flex-column gap-2"></div>
           </div>
         </div>
       </div>
-      <div class="glass-card p-4 mt-4 card-hover animate-in">
+      <div class="glass-card p-4 mt-4 card-hover animate-in" id="mapembed">
   <h6>Shelter Contact & Map</h6>
   <p><i class="fas fa-phone me-2"></i>(+92) 314 7765273<br><i class="fas fa-phone me-2"></i>(+92) 319 6333621</p>
   <p><i class="fas fa-envelope me-2"></i>zaidzakirkaj5388@gmail.com<br><i class="fas fa-envelope me-2"></i>siddiquisahab0094@gmail.com</p>
@@ -329,6 +351,11 @@
       </div>
     </section>
   </main>
+
+
+
+
+
   <footer class="footer glass-footer py-5 text-white">
     <div class="container">
       <div class="row g-4">
@@ -339,7 +366,7 @@
         <div class="col-md-4">
           <h5 class="mb-3">Quick Links</h5>
           <ul class="list-unstyled">
-            <li><a href="#overview" class="text-white text-decoration-none link-hover">Home</a></li>
+            <li><a href="/" class="text-white text-decoration-none link-hover">Home</a></li>
             <li><a href="#petOwnerSection" class="text-white text-decoration-none link-hover">Pet Owners</a></li>
             <li><a href="#veterinarianSection" class="text-white text-decoration-none link-hover">Veterinarians</a></li>
             <li><a href="#shelterSection" class="text-white text-decoration-none link-hover">Shelters</a></li>
@@ -365,6 +392,14 @@
       </div>
     </div>
   </footer>
+
+
+
+
+
   <a href="#" class="back-to-top" title="Back to top"><i class="fas fa-chevron-up"></i></a>
+
+
+
 </body>
 </html>

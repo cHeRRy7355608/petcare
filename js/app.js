@@ -1,4 +1,3 @@
-// ---------- Global initMap (unchanged) ----------
 window.initMap = function() {
   const fallback = { lat: 24.9715, lng: 67.0647 };
   const map = new google.maps.Map(document.getElementById('map'), {
@@ -34,14 +33,13 @@ window.initMap = function() {
   });
 };
 
-// ---------- Main App Logic ----------
 let appData = null;
 let jsonProducts = [];
 let visitorCount = parseInt(localStorage.getItem('visitorCount')) || 0;
 visitorCount++;
 localStorage.setItem('visitorCount', visitorCount);
 
-// Sample data for fallback (if data.json is unavailable)
+
 const sampleVetSlots = [
   { id: 1, time: "2025-09-15 10:00 AM", status: "available", petName: "" },
   { id: 2, time: "2025-09-15 11:00 AM", status: "booked", petName: "Max" },
@@ -190,21 +188,13 @@ function init() {
   document.getElementById('newsletterForm').addEventListener('submit', e => {
     e.preventDefault();
     Swal.fire({
-      title: "Thank you for subscribing! (UI-only)",
+      title: "Thank you for subscribing!",
       icon: "success",
       draggable: true
     });
     e.target.reset();
   });
-  document.getElementById('productSearch')?.addEventListener('input', filterAndSortProducts);
-  document.getElementById('productSort')?.addEventListener('change', filterAndSortProducts);
-  document.querySelectorAll('#productFilters .filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#productFilters .filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      filterAndSortProducts();
-    });
-  });
+
   document.querySelectorAll('#shelterSection .filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#shelterSection .filter-btn').forEach(b => b.classList.remove('active'));
@@ -282,7 +272,7 @@ function init() {
   });
 }
 
-// Initialize Veterinarian Dashboard
+
 function initVeterinarianDashboard() {
   if ($("#veterinarianSection").is(":visible")) {
     renderVetSlots();
@@ -292,7 +282,7 @@ function initVeterinarianDashboard() {
   }
 }
 
-// Appointment Slots: Load and Save
+
 function loadVetData() {
   const savedSlots = localStorage.getItem('vetSlots');
   const savedHistories = localStorage.getItem('caseStudies');
@@ -307,7 +297,7 @@ function saveVetData(slots, histories) {
   localStorage.setItem('caseStudies', JSON.stringify(histories));
 }
 
-// Appointment Slots: Render
+
 function renderVetSlots() {
   const { vetSlots } = loadVetData();
   const box = document.getElementById('timeSlots');
@@ -327,7 +317,7 @@ function renderVetSlots() {
   });
   setTimeout(() => box.querySelectorAll('.animate-in').forEach(el => el.classList.add('visible')), 100);
 
-  // Handle slot toggle
+  
   document.querySelectorAll('.toggle-slot').forEach(btn => {
     btn.addEventListener('click', () => {
       const slotId = btn.dataset.id;
@@ -376,11 +366,11 @@ function renderVetSlots() {
   });
 }
 
-// Appointment Slots: Add New Form
+
 function initAppointmentForm() {
   const vetSection = document.querySelector('#veterinarianSection .col-lg-5');
   const existingForm = document.getElementById('appointmentForm');
-  if (existingForm) return; // Prevent duplicate forms
+  if (existingForm) return;
   const formHtml = `
     <div class="glass-card p-4 mt-3 card-hover animate-in">
       <h6>Add Appointment Slot</h6>
@@ -409,7 +399,7 @@ function initAppointmentForm() {
   setTimeout(() => vetSection.querySelectorAll('.animate-in').forEach(el => el.classList.add('visible')), 100);
 }
 
-// Pet Medical Histories: Render
+
 function renderCaseStudies() {
   const { caseStudies } = loadVetData();
   const box = document.getElementById('caseStudies');
@@ -427,7 +417,7 @@ function renderCaseStudies() {
   });
   setTimeout(() => box.querySelectorAll('.animate-in').forEach(el => el.classList.add('visible')), 100);
 
-  // Handle view details
+ 
   document.querySelectorAll('.view-history').forEach(btn => {
     btn.addEventListener('click', () => {
       const historyId = btn.dataset.id;
@@ -449,7 +439,7 @@ function renderCaseStudies() {
         }
       }).then(result => {
         if (result.isConfirmed) {
-          // Optionally save notes to history.text or a new field
+         
           Swal.fire('Success', 'Notes saved!', 'success');
         }
       });
@@ -457,11 +447,11 @@ function renderCaseStudies() {
   });
 }
 
-// Pet Medical Histories: Add New Form
+
 function initMedicalHistoryForm() {
   const vetSection = document.querySelector('#veterinarianSection .col-lg-5');
   const existingForm = document.getElementById('medicalHistoryForm');
-  if (existingForm) return; // Prevent duplicate forms
+  if (existingForm) return;
   const formHtml = `
     <div class="glass-card p-4 mt-3 card-hover animate-in">
       <h6>Add Medical History</h6>
@@ -531,24 +521,24 @@ function setMenuFor(cat) {
   if (cat === 'petOwner') {
     menu.innerHTML = `
       <li class="nav-item"><a class="nav-link" href="#petOwnerSection">Pet Care</a></li>
-      <li class="nav-item"><a class="nav-link" href="#petOwnerSection .glass-card:nth-of-type(3)">Products</a></li>
-      <li class="nav-item"><a class="nav-link" href="#petOwnerSection .glass-card:nth-of-type(6)">Emergency</a></li>
+      <li class="nav-item"><a class="nav-link .glass-card:nth-of-type(3)" href="#petOwnerSection ">Products</a></li>
+      <li class="nav-item"><a class="nav-link .glass-card:nth-of-type(6)" href="#emer">Emergency</a></li>
       <li class="nav-item"><a class="nav-link" href="#commonSections">Feedback</a></li>
       <li class="nav-item"><a class="nav-link" href="#aboutUs">About</a></li>
     `;
   } else if (cat === 'veterinarian') {
     menu.innerHTML = `
-      <li class="nav-item"><a class="nav-link" href="#veterinarianSection #vetProfileDisplay">Profile</a></li>
-      <li class="nav-item"><a class="nav-link" href="#veterinarianSection #timeSlots">Appointments</a></li>
-      <li class="nav-item"><a class="nav-link" href="#veterinarianSection #caseStudies">Medical Histories</a></li>
+      <li class="nav-item"><a class="nav-link" href="#veterinarianSection">Profile</a></li>
+      <li class="nav-item"><a class="nav-link" href="#timeSlots">Appointments</a></li>
+      <li class="nav-item"><a class="nav-link" href="#caseStudies">CaseStudies</a></li>
       <li class="nav-item"><a class="nav-link" href="#commonSections">Contact</a></li>
     `;
   } else if (cat === 'shelter') {
     menu.innerHTML = `
-      <li class="nav-item"><a class="nav-link" href="#shelterSection #adoptionGallery">Adoptables</a></li>
-      <li class="nav-item"><a class="nav-link" href="#shelterSection #successStories">Success Stories</a></li>
-      <li class="nav-item"><a class="nav-link" href="#shelterSection #eventAnnouncements">Events</a></li>
-      <li class="nav-item"><a class="nav-link" href="#shelterSection #map">Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="#adoptionGallery">Adoptables</a></li>
+      <li class="nav-item"><a class="nav-link" href="#successStories">Success Stories</a></li>
+      <li class="nav-item"><a class="nav-link" href="#eventAnnouncements">Events</a></li>
+      <li class="nav-item"><a class="nav-link" href="#mapembed">Contact</a></li>
     `;
   } else {
     menu.innerHTML = `
@@ -601,24 +591,6 @@ function renderProducts() {
   updateStats();
 }
 
-function filterAndSortProducts() {
-  const search = document.getElementById('productSearch').value.toLowerCase();
-  const sort = document.getElementById('productSort').value;
-  const filter = document.querySelector('#productFilters .filter-btn.active')?.dataset.filter || 'all';
-  let items = Array.from(document.querySelectorAll('.product-item'));
-  items = items.filter(item => {
-    const catMatch = filter === 'all' || item.dataset.category === filter;
-    const searchMatch = item.dataset.name.includes(search);
-    return catMatch && searchMatch;
-  });
-  if (sort === 'name-asc') items.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
-  else if (sort === 'name-desc') items.sort((a, b) => b.dataset.name.localeCompare(a.dataset.name));
-  else if (sort === 'price-asc') items.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
-  else if (sort === 'price-desc') items.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = '';
-  items.forEach(item => grid.appendChild(item));
-}
 
 function renderAdoptables() {
   const grid = document.getElementById('adoptionGallery');
@@ -749,3 +721,60 @@ function updateStats() {
   document.getElementById('statProducts').textContent = jsonProducts.length;
   document.getElementById('statAdopt').textContent = appData.adoptables.length;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+function filterAndSortProducts() {
+  const search = document.getElementById('productSearch').value.toLowerCase();
+  const sort = document.getElementById('productSort').value;
+  const filter = document.querySelector('#productFilters .filter-btn.active')?.dataset.filter || 'all';
+
+
+  let items = Array.from(document.querySelectorAll('.product-item'));
+
+ 
+  items = items.filter(item => {
+    const catMatch = filter === 'all' || item.dataset.category === filter;
+    const searchMatch = item.dataset.name.toLowerCase().includes(search);
+    return catMatch && searchMatch;
+  });
+
+ 
+  if (sort === 'name-asc') {
+    items.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
+  } else if (sort === 'name-desc') {
+    items.sort((a, b) => b.dataset.name.localeCompare(a.dataset.name));
+  } else if (sort === 'price-asc') {
+    items.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+  } else if (sort === 'price-desc') {
+    items.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+  }
+
+
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = '';  
+  items.forEach(item => grid.appendChild(item));  
+}
+
+
+document.getElementById('productSearch')?.addEventListener('input', filterAndSortProducts);
+document.getElementById('productSort')?.addEventListener('change', filterAndSortProducts);
+
+
+document.querySelectorAll('#productFilters .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+  
+    document.querySelectorAll('#productFilters .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterAndSortProducts();  
+  });
+});

@@ -171,7 +171,10 @@
   ],
   "events": [
     {"title": "Free Vaccination Camp", "date": "2025-09-20", "location": "Karachi Shelter", "desc": "Free core vaccines for dogs and cats."},
-    {"title": "Adoption Drive", "date": "2025-10-05", "location": "City Park", "desc": "Meet our adoptable animals and adopt a friend."}
+    {"title": "Adoption Drive", "date": "2025-10-05", "location": "City Park", "desc": "Meet our adoptable animals and adopt a friend."},
+    {"title": "Pet Health Checkup Camp", "date": "2025-10-15", "location": "Downtown Vet Clinic", "desc": "Free basic health checkups and consultations for dogs and cats."},
+{"title": "Pet Training Workshop", "date": "2025-11-02", "location": "Community Hall", "desc": "Learn obedience training and fun tricks with professional trainers."}
+
   ],
   "successStories": [
     {"title": "Max's New Home", "image": "images/Max's New Home/max.jpg", "text": "Max was adopted last year and is thriving with his new family."},
